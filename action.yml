@@ -1,0 +1,13 @@
+name: 'Tevel NPM Authentication'
+description: 'Perform Tevel private registry npm authentication'
+runs:
+  using: "composite"
+  steps: 
+    - run: npm config set _auth ${{ secrets.NPM_AUTH }}
+      shell: sh
+    - run: npm config set email ${{ secrets.NPM_EMAIL }}
+      shell: sh
+    - run: npm config set always-auth true
+      shell: sh
+    - run: npm config set registry ${{ secrets.NPM_REGISTRY }}
+      shell: sh
