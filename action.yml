@@ -13,11 +13,9 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - run: npm config set email ${{ inputs.npm_email }}
-      shell: sh
-    - run: npm config set _auth ${{ inputs.npm_auth }}
-      shell: sh
-    - run: npm config set always-auth true
-      shell: sh
-    - run: npm config set registry ${{ inputs.npm_registry }}
+    - run: |
+        echo "_auth="${{ inputs.npm_auth }}"
+        email=${{ inputs.npm_email }}
+        always-auth=true
+        registry=${{ inputs.npm_registry }}" > ~/.npmrc
       shell: sh
