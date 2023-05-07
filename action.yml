@@ -11,10 +11,11 @@ inputs:
       description: npm private registry address
       required: true
 runs:
+
   using: "composite"
   steps: 
     - run: |
-        echo "_auth="${{ inputs.npm_auth }}"
+        echo "${{ secrets.NPM_REGISTRY_AUTH_PREFIX }}:_authToken="${{ inputs.npm_auth }}"
         email=${{ inputs.npm_email }}
         always-auth=true
         registry=${{ inputs.npm_registry }}" > ~/.npmrc
