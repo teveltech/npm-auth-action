@@ -18,6 +18,5 @@ runs:
   using: "composite"
   steps: 
     - run: |
-        echo "${{ inputs.npm_auth_prefix }}:_authToken=${{ inputs.npm_auth }}
-        registry=${{ inputs.npm_registry }}" > ~/.npmrc
+        echo "${{ inputs.npm_auth_prefix }}:_authToken=${{ inputs.npm_auth }}" > ~/.npmrc
       shell: sh
