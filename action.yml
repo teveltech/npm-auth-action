@@ -18,7 +18,7 @@ runs:
   using: "composite"
   steps: 
     - run: |
-        echo "${{ inputs.npm_auth_prefix }}:_authToken="${{ inputs.npm_auth }}"
+        echo "${{ inputs.npm_auth_prefix }}:_authToken=${{ inputs.npm_auth }}
         email=${{ inputs.npm_email }}
         always-auth=true
         registry=${{ inputs.npm_registry }}" > ~/.npmrc
