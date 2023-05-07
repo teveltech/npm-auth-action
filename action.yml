@@ -4,6 +4,9 @@ inputs:
     npm_auth:
       description: npm authentication token
       required: true
+    npm_auth_prefix:
+      description: npm authentication prefix
+      required: true
     npm_email:
       description: npm user email
       required: true
@@ -15,7 +18,7 @@ runs:
   using: "composite"
   steps: 
     - run: |
-        echo "${{ secrets.NPM_REGISTRY_AUTH_PREFIX }}:_authToken="${{ inputs.npm_auth }}"
+        echo "${{ inputs.npm_auth_prefix }}:_authToken="${{ inputs.npm_auth }}"
         email=${{ inputs.npm_email }}
         always-auth=true
         registry=${{ inputs.npm_registry }}" > ~/.npmrc
